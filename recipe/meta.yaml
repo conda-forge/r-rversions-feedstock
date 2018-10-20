@@ -1,5 +1,4 @@
 {% set version = '1.0.3' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,23 +9,25 @@ package:
 source:
   fn: rversions_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/rversions_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/rversions/rversions_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/rversions_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/rversions/rversions_{{ version }}.tar.gz
   sha256: 21d0809f46505de89a2be7be9449e39c39cff5bc77e584dec976ee6c0b884f44
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
+
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-curl
     - r-xml2 >=1.0.0
-
   run:
     - r-base
     - r-curl
@@ -34,7 +35,7 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('rversions')"  # [not win]
+    - $R -e "library('rversions')"           # [not win]
     - "\"%R%\" -e \"library('rversions')\""  # [win]
 
 about:
@@ -48,3 +49,7 @@ extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
