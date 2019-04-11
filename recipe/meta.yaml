@@ -1,4 +1,4 @@
-{% set version = '1.0.3' %}
+{% set version = '1.1.0' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,16 +7,15 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: rversions_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/rversions_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rversions/rversions_{{ version }}.tar.gz
-  sha256: 21d0809f46505de89a2be7be9449e39c39cff5bc77e584dec976ee6c0b884f44
+  sha256: 14a5a2f06b74e332fd9cbd4d715baa6165f5269c9ba2c0b9f1d0c6540dde9c3c
 
 build:
-  noarch: generic
   merge_build_host: True  # [win]
-  number: 1001
+  number: 0
+  noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
@@ -39,7 +38,7 @@ test:
     - "\"%R%\" -e \"library('rversions')\""  # [win]
 
 about:
-  home: https://github.com/metacran/rversions
+  home: https://github.com/r-hub/rversions, https://r-hub.github.io/rversions
   license: MIT
   summary: Query the main 'R' 'SVN' repository to find the versions 'r-release' and 'r-oldrel'
     refer to, and also all previous 'R' versions and their release dates.
@@ -47,9 +46,23 @@ about:
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
+    - conda-forge/r
+
+# Package: rversions
+# Title: Query 'R' Versions, Including 'r-release' and 'r-oldrel'
+# Version: 1.1.0
+# Authors@R: c( person("Gabor", "Csardi", , "csardi.gabor@gmail.com", role = c("aut", "cre")), person("Jeroen", "Ooms", , "jeroen.ooms@stat.ucla.edu", role = "ctb"), person("R Consortium", role = c("fnd")))
+# Description: Query the main 'R' 'SVN' repository to find the versions 'r-release' and 'r-oldrel' refer to, and also all previous 'R' versions and their release dates.
+# License: MIT + file LICENSE
+# URL: https://github.com/r-hub/rversions, https://r-hub.github.io/rversions
+# BugReports: https://github.com/r-hub/rversions/issues
+# Imports: curl, xml2 (>= 1.0.0), utils
+# Encoding: UTF-8
+# RoxygenNote: 6.1.1
+# Suggests: mockery, testthat
+# NeedsCompilation: no
+# Packaged: 2019-04-11 10:28:28 UTC; gaborcsardi
+# Author: Gabor Csardi [aut, cre], Jeroen Ooms [ctb], R Consortium [fnd]
+# Maintainer: Gabor Csardi <csardi.gabor@gmail.com>
+# Repository: CRAN
+# Date/Publication: 2019-04-11 10:42:43 UTC
