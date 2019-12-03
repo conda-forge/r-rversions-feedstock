@@ -1,4 +1,4 @@
-{% set version = "2.0.0" %}
+{% set version = "2.0.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rversions_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rversions/rversions_{{ version }}.tar.gz
-  sha256: b50c321d9e973284ae6b1d0c89bd46a40f5174de51fb28e3c77cd12ef34f6f56
+  sha256: 51ec1f64e7d628e88d716a020d5d521eba71d472e3c9ae7b694428ef6dd786c5
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -40,6 +40,7 @@ test:
 about:
   home: https://github.com/r-hub/rversions, https://r-hub.github.io/rversions
   license: MIT
+  license_file: LICENSE
   summary: Query the main 'R' 'SVN' repository to find the versions 'r-release' and 'r-oldrel'
     refer to, and also all previous 'R' versions and their release dates.
   license_family: MIT
