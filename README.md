@@ -1,11 +1,11 @@
-About r-rversions
-=================
+About r-rversions-feedstock
+===========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rversions-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/r-hub/rversions, https://r-hub.github.io/rversions
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rversions-feedstock/blob/main/LICENSE.txt)
 
 Summary: Query the main 'R' 'SVN' repository to find the versions 'r-release' and 'r-oldrel' refer to, and also all previous 'R' versions and their release dates.
 
